@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body  id="body">
+
+    <div class="main" id="main">
+        <ul class="links">
+            <li><a href="#about" onclick="document.getElementById('about').style.display='block';
+            document.getElementById('main').style.display='none';
+            document.getElementById('projects').style.display='none';
+            document.getElementById('about').style.backfaceVisibility='blur(8px)';">About me </a></li>
+            <li><a href="#projects" onclick="document.getElementById('about').style.display='none';
+                document.getElementById('main').style.display='none';
+                document.getElementById('projects').style.display='block';">My Work</a></li>
+        </ul>
+        <div class="info">
+            <div class="prof_pic">
+                <img src="assests/image.png" alt="my profile picture">
+            </div>
+            <div class="det_1">
+                <h1>Samuel Wamae</h1>
+                <h2>Beginner Full-stack Web & Systems Designer </h2>
+                <a href=""></a><button>Contact me</button></a>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="about" id="about">
+        <button onclick="document.getElementById('about').style.display='none';
+        document.getElementById('main').style.display='block';
+        document.getElementById('projects').style.display='none';"></button>
+        <div class="description">
+            <h3>Description:</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur.
+            </p>
+        </div>
+        <div class="Qualifications">
+            <h3>Qualifications:</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur.
+            </p>
+
+        </div>
+
+    </div>
+    <div class="projects" id="projects">
+        <button onclick="document.getElementById('about').style.display='none';
+        document.getElementById('main').style.display='block';
+        document.getElementById('projects').style.display='none';"></button>
+        <div class="proj_1">
+            <figure>
+
+                <img src="assests/calc.png" alt="">
+                <figcaption>
+                    <a href="https://github.com/SAmWaM42/calculator-in-java" target="_self">Calculator app</a>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="proj_2">
+            <figure>
+                <img src="assests/calc.png" alt="">
+                <figcaption>
+                    <a href="https://github.com/SAmWaM42/simple_battleship-game" target="_self">Battleship</a>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="proj_3">
+            <figure>
+
+                <img src="assests/calc.png" alt="">
+                <figcaption>
+                    <a href="https://github.com/SAmWaM42/2D_mapmaker" target="_self">2D mapmaker using Raylib</a>
+                </figcaption>
+            </figure>
+        </div>
+
+        <div class="proj_4">
+            <figure>
+                <img src="assests/calc.png" alt="">
+                <figcaption><a href="https://github.com/SAmWaM42/simple-recipe-website" target="_self">Recipe website </a></figcaption>
+            </figure>
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,3 @@
+decide the database layout 
+work out how im going to send the deposit and transfer requests to mpesa or a bank
+
