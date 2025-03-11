@@ -1,95 +1,63 @@
-// Source code is decompiled from a .class file using FernFlower decompiler.
-import java.io.IOException;
-import java.util.Iterator;
+//Webscrapper for static webpages
+
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse; // Correct import
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.HttpEntity;
-import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 public class Data {
-   public Data() {
-   }
 
-   public static void main(String[] var0) {
-      String var1 = "https://www.carrefour.ke/mafken/en/n/c/clp_FKEN1660000";
+    public static void main(String args[]) {
+        String url[] = { "https://www.carrefour.ke/mafken/en/" }; // Replace with the product URL
+        int number = 0;
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpGet request = new HttpGet(url[number]);
+            try (CloseableHttpResponse response = httpClient.execute(request)) {
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    try {
+                        String html = EntityUtils.toString(entity);
 
-      try {
-         CloseableHttpClient var2 = HttpClients.createDefault();
+                        Document doc = Jsoup.parse(html);
+                        /*
+                         * Elements productNames = doc.select("a[href]"); // Replace with the correct
+                         * selector
+                         * for (Element productName : productNames) {
+                         * System.out.println(productName.text());
+                         * }
+                         */
 
-         try {
-            HttpGet var3 = new HttpGet(var1);
-            CloseableHttpResponse var4 = var2.execute(var3);
+                        Elements prices = doc.select("a[href]");
+                        if (prices.isEmpty()) {
+                            System.out.println(prices.isEmpty());
+                        } else {
+                            System.out.println(prices.size());
+                        }
 
-            try {
-               HttpEntity var5 = var4.getEntity();
-               if (var5 != null) {
-                  try {
-                     String var6 = EntityUtils.toString(var5);
-                     Document var7 = Jsoup.parse(var6);
-                     Elements var8 = var7.select(".product_name ");
-                     if (var8.first() == null) {
-                        System.out.println("got here");
-                     }
+                        for (Element price : prices) {
+                            System.out.println(price.attr("href"));
+                        }
 
-                     Iterator var9 = var8.iterator();
+                    } catch (org.apache.hc.core5.http.ParseException e) {
+                        e.printStackTrace();
+                    }
 
-                     while(var9.hasNext()) {
-                        Element var10 = (Element)var9.next();
-                        System.out.println(var10.text());
-                     }
+                }
 
-                     Elements var19 = var7.select(".product-name h1");
-                     Iterator var18 = var19.iterator();
-
-                     while(var18.hasNext()) {
-                        Element var11 = (Element)var18.next();
-                        System.out.println(var11.text());
-                     }
-                  } catch (ParseException var14) {
-                     System.out.println("No content received from the website.");
-                     var14.printStackTrace();
-                  }
-               }
-            } catch (Throwable var15) {
-               if (var4 != null) {
-                  try {
-                     var4.close();
-                  } catch (Throwable var13) {
-                     var15.addSuppressed(var13);
-                  }
-               }
-
-               throw var15;
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-            if (var4 != null) {
-               var4.close();
-            }
-         } catch (Throwable var16) {
-            if (var2 != null) {
-               try {
-                  var2.close();
-               } catch (Throwable var12) {
-                  var16.addSuppressed(var12);
-               }
-            }
-
-            throw var16;
-         }
-
-         if (var2 != null) {
-            var2.close();
-         }
-      } catch (IOException var17) {
-         var17.printStackTrace();
-      }
-
-   }
+    }
 }
